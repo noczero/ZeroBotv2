@@ -1,0 +1,16 @@
+{
+  "name": "zerobotv2",
+  "version": "1.0.0",
+  "description": "Telegram Bot",
+  "main": "zerobot.js",
+  "dependencies": {
+    "bluebird": "^3.3.5",
+    "bot-brother": "^1.0.48"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node zerobot.js"
+  },
+  "author": "Satrya Budi Pratama",
+  "license": "MIT"
+}
