@@ -83,7 +83,12 @@ bot.command('hi')
 
 bot.command('jadwal', {compilantKeyboard : true})
 	.invoke(function (ctx) {
-		return ctx.sendMessage(':heavy_check_mark: Choose Schedule : ')
+		var oneDay = 24*60*60*1000;
+		var now = new Date();
+		var tglMasuk = new Date(2016,08,22);
+		var hitungTgl = Math.round(Math.abs((now.getTime() - tglMasuk.getTime())/(oneDay)));
+		ctx.data.sisamasuk = hitungTgl;
+		return ctx.sendMessage('main.info')
 	})
 	.keyboard([
 		[{'button.senin' : {go : 'senin'}}],
@@ -133,11 +138,15 @@ bot.command('help' , {compilantKeyboard : true})
 });
 bot.command('tugas' , {compilantKeyboard : true})
 	.invoke(function (ctx) {
-		return ctx.sendMessage('404 : Data Not Found :(');
+		return ctx.sendMessage('main.notfound');
 });
 bot.command('sholat' , {compilantKeyboard : true})
 	 .use('before', function(ctx) {
+	var oneDay = 24*60*60*1000;
+	var idulfitri = new Date(2016,06,06);
 	var waktu = new Date();
+	var toIdulFitri = Math.round(Math.abs((waktu.getTime() - idulfitri.getTime())/(oneDay)));
+	ctx.data.ied = toIdulFitri;
 	ctx.data.localtime = waktu;
  	ctx.data.waktusholat = Sholat.getTimes(waktu, [6.9719, 107.6127], 'auto', 'auto' );
  	ctx.data.latitude = '6.9719';

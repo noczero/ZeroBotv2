@@ -93,4 +93,9 @@ main :
       :clock3: Ashar    : <%=waktusholat.asr%> 
       :clock6: Maghrib  : <%=waktusholat.maghrib%> 
       :clock7: Isya     : <%=waktusholat.isha%> 
+      :rocket: Eid al-Fitr in <%=ied%> days from now.
+
+  info : |
+    :heavy_check_mark: Choose Schedule 
+    :rocket: 22 August 2016 in <%=sisamasuk%> days from now.
 
