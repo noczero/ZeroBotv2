@@ -5,7 +5,8 @@
   "main": "zerobot.js",
   "dependencies": {
     "bluebird": "^3.3.5",
-    "bot-brother": "^1.0.48"
+    "bot-brother": "^1.0.48",
+    "forecast": "^0.2.1"
   },
   "devDependencies": {},
   "scripts": {

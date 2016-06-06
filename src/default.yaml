@@ -12,7 +12,7 @@ button:
   kamis : ':four: Thursday'
   jumat : ':five: Friday'
   sabtu : ':six: Saturday'
-  remove: ':x: Delete'
+  weather: ':rainbow: Weather'
   cancel: ':negative_squared_cross_mark: Cancel'
   like: ':heart_decoration: I like this bot'
   rate:
@@ -60,8 +60,8 @@ main :
     1. Example1
     2. Example2
     3. Example3
-
   tugas : |
+
     :large_blue_circle: Our Home Work
     1. Example1
     2. Example2
@@ -80,6 +80,7 @@ main :
       /sholat - Get Prayers Time Bandung
       /maptelkom - Get Coordinate of Telkom University
       /data - Get Data of student by type /data yourname
+      /weather - Get Forecast for Bandung
       /help - General Information about command
 
   sholat : |
@@ -99,3 +100,21 @@ main :
     :heavy_check_mark: Choose Schedule 
     :rocket: 22 August 2016 in <%=sisamasuk%> days from now.
 
+  weather : |
+    :round_pushpin: Bandung, Indonesia
+    :telescope: Currently Weather Conditions:
+    ---- <%=statuss%> ----
+    Temperature : <%=temperatures%> °C
+    Dew Point : <%=dewpoint%> °C
+    Humidity : <%=humiditys%> %
+    Cloud Cover in Sky : <%=sky%> %
+    Wind Speed : <%=winds%> miles/hours
+    Wind Direction : <%=windbear%> °
+    Atmospheric Pressure : <%=pressure%> hPa
+    Area Density of Ozone : <%=ozone%> DU
+
+    :telescope: Tommorow Prediction:
+    <%=hourly%>
+
+    :telescope: Weekly Prediction:  
+    <%=today%>

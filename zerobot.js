@@ -9,7 +9,20 @@
 
 var bb = require ('bot-brother');
 var texts = require ('./texts.js');
+var Forecast = require('forecast');
 
+//Cuaca
+var forecast = new Forecast ({
+	service : 'forecast.io',
+	key : '60ed96475023ebfc2e64001a7f6123bc',
+	units : 'celcius',
+	cache : true,
+	ttl : {
+		minutes : 5
+	}
+});
+	
+//SHolat
 var PrayerTimes = require('prayer-times'),
 	Sholat = new PrayerTimes();
 
@@ -28,6 +41,7 @@ var bot = bb({
 	[{'button.tugas' : {go : 'tugas' }}],
 	[{'button.data' : {go : 'data' }}],
 	[{'button.map' : {go : 'maptelkom' }}],
+	[{'button.weather' : {go : 'weather' }}],
 	[{'button.help' : {go : 'help' }}]
 	
 ])
@@ -83,10 +97,10 @@ bot.command('hi')
 
 bot.command('jadwal', {compilantKeyboard : true})
 	.invoke(function (ctx) {
-		var oneDay = 24*60*60*1000;
+		var oneDays = 24*60*60*1000;
 		var now = new Date();
 		var tglMasuk = new Date(2016,08,22);
-		var hitungTgl = Math.round(Math.abs((now.getTime() - tglMasuk.getTime())/(oneDay)));
+		var hitungTgl = Math.round(Math.abs((now.getTime() - tglMasuk.getTime())/(oneDays)));
 		ctx.data.sisamasuk = hitungTgl;
 		return ctx.sendMessage('main.info')
 	})
@@ -460,3 +474,40 @@ bot.command('data', {compilantKeyboard : true})
 	 }	
 
 });
+
+		
+forecast.get([-6.974402, 107.631733], true, function(err, result){
+	if(err) return console.dir(err);
+	//console.dir(weather);
+	var timezone = result.timezone;
+	var status = result.currently.summary;
+	var temperature = Math.round(parseFloat(result.currently.temperature, 10));
+	var humidity = result.currently.humidity * 100;
+	var wind = Math.round(parseFloat(result.currently.windSpeed));
+	var statusDaily = result.daily.summary;
+	var statusHourly = result.hourly.summary;
+	var statuswindBear = result.currently.windBearing;
+	var statusSky = Math.round(result.currently.cloudCover * 100);
+	var dew = result.currently.dewPoint;
+	var statusPressure = result.currently.pressure;
+	var statusOzone = result.currently.ozone;
+	bot.command('weather', {compilantKeyboard : true})
+	.use('before', function (ctx) {
+			ctx.data.timezones = timezone;
+			ctx.data.statuss = status;
+			ctx.data.temperatures = temperature;
+			ctx.data.humiditys = humidity;
+			ctx.data.winds = wind;
+			ctx.data.today = statusDaily;
+			ctx.data.hourly = statusHourly;
+			ctx.data.windbear = statuswindBear;
+			ctx.data.sky = statusSky;
+			ctx.data.dewpoint = dew;
+			ctx.data.pressure = statusPressure;
+			ctx.data.ozone = statusOzone;
+	})
+	.invoke(function (ctx) {
+		return ctx.sendMessage('main.weather');
+	});
+});
+		
