@@ -6,7 +6,10 @@
   "dependencies": {
     "bluebird": "^3.3.5",
     "bot-brother": "^1.0.48",
-    "forecast": "^0.2.1"
+    "cron": "^1.1.0",
+    "forecast": "^0.2.1",
+    "js-yaml": "^3.6.1",
+    "prayer-times": "^0.1.0"
   },
   "devDependencies": {},
   "scripts": {
