@@ -27,45 +27,40 @@ main :
   
   senin : |
     :red_circle: Default Monday Schedules 
-    1. Example1
-    2. Example2
-    3. Example3
+    1. 09:30 - 12:30 (A208A) KU1.02.15 TBA
+    2. 12:30 - 15:30 KU3.05.13 PROBSTAT
+    3. 15:30 - 18:30 KU3.04.18 LOGMAT
 
   selasa : |
     :red_circle: Default Tuesday Schedules 
-    1. Example1
-    2. Example2
-    3. Example3
+    1. 06:30 - 09:30 (A304B) KU1.03.08 SISOP 
+    2. 09:30 - 12:30 (A308B) KU1.03.10 SISDIG
+    3. 12:30 - 13:30 (A207B) KU1.02.14 STRUKDAT
   
   rabu : |
     :red_circle: Default Wednesday Schedules 
-    1. Example1
-    2. Example2
-    3. Example3
+    1. 06:30 - 08:30 E302 KWU
+    2. 12:30 - 14:30 (A304B) KU1.03.08 PBD
+    3. 14:30 - 16:30 (A308B) KU1.03.10 STRUKDAT
 
   kamis : |
     :red_circle: Default Thursday Schedules
-    1. Example1
-    2. Example2
-    3. Example3
+    1. 06:30 - 09:30 LABIF-01 Prak. STRUKDAT
 
   jumat : |
     :red_circle: Default Friday Schedules 
-    1. Example1
-    2. Example2
-    3. Example3
+    1. 12:30 - 15:30 LABIF-02 Prak. PBD
 
   sabtu : |
     :red_circle: Default Saturday Schedules 
-    1. Example1
-    2. Example2
-    3. Example3
-  tugas : |
+    1. Free
 
+  tugas : |
     :large_blue_circle: Our Home Work
-    1. Example1
-    2. Example2
-    3. Example3
+    1. TUBES PBD 
+    2. TUGAS 2 LOGMAT (Deadline : 6 Oktober)
+    3. TUBES TBA
+    4. Bussiness Plan KWU
 
   help : |
     :white_circle: General Commands :
@@ -94,11 +89,10 @@ main :
       :clock3: Ashar    : <%=waktusholat.asr%> 
       :clock6: Maghrib  : <%=waktusholat.maghrib%> 
       :clock7: Isya     : <%=waktusholat.isha%> 
-      :rocket: Eid al-Fitr in <%=ied%> days from now.
-
+    
   info : |
     :heavy_check_mark: Choose Schedule 
-    :rocket: 22 August 2016 in <%=sisamasuk%> days from now.
+
 
   weather : |
     :round_pushpin: Bandung, Indonesia

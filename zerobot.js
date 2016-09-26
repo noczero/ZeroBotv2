@@ -26,6 +26,40 @@ var forecast = new Forecast ({
 var PrayerTimes = require('prayer-times'),
 	Sholat = new PrayerTimes();
 
+//Cron Job
+var myId = '211470016';
+
+// JadwalVarGloabalnotCTX
+var jadwalSenin = "Semangat pagi Boss! \n Jadwal kuliah hari ini \n 1. 09:30 - 12:30 (A208A) KU1.02.15 TBA \n 2. 12:30 - 15:30 KU3.05.13 PROBSTAT \n 3. 15:30 - 18:30 KU3.04.18 LOGMAT ";
+var jadwalSelasa = "Semangat pagi Boss! \n Jadwal kuliah hari ini : \n 1. 06:30 - 09:30 (A304B) KU1.03.08 SISOP  \n 2. 09:30 - 12:30 (A308B) KU1.03.10 SISDIG \n 3. 12:30 - 13:30 (A207B) KU1.02.14 STRUKDAT";
+var jadwalRabu = "Semangat pagi Boss! \n Jadwal kuliah hari ini : \n 1. 006:30 - 08:30 E302 KWU  \n 2. 12:30 - 14:30 (A304B) KU1.03.08 PBD \n 3. 14:30 - 16:30 (A308B) KU1.03.10 STRUKDAT";
+var jadwalKamis = "Semangat pagi Boss! \n Jadwal kuliah hari ini : \n 1. 06:30 - 09:30 LABIF-01 Prak. STRUKDAT";
+var jadwalJumat = "Semangat pagi Boss! \n Jadwal kuliah hari ini : \n 1. 12:30 - 15:30 LABIF-02 Prak. PBD";
+var jadwalSabtu = "Happy weekend Boss!, ntar malam ada QUIZ PDB & LPP STRUKDAT";
+var CronJob = require('cron').CronJob;
+var job = new CronJob({
+  cronTime: '00 00 06 * * 1-5',
+  onTick: function() {
+   	var hari=new Date();
+    switch (hari.getDay()) { 	
+    	case 1 : bot.api.sendMessage(myId , jadwalSenin);
+		break;
+		case 2 : bot.api.sendMessage(myId , jadwalSelasa);
+		break;
+		case 3 : bot.api.sendMessage(myId , jadwalRabu);
+		break;
+		case 4 : bot.api.sendMessage(myId , jadwalKamis);
+		break;
+		case 5 : bot.api.sendMessage(myId , jadwalJumat);
+		break;
+
+	}
+  },
+  start: false,
+  timeZone: 'Asia/Jakarta'
+});
+job.start();
+
 var now = Date.now();
 
 var bot = bb({
@@ -78,10 +112,10 @@ var bot = bb({
 // });
 
 bot.listenUpdates();
-
-
 //Command ZeroBot
 console.log('ZeroBotV2 Started');
+
+// SAY HI
 bot.command('hi')
 	.invoke(function (ctx) {
 	ctx.data.user = ctx.meta.user;
@@ -95,13 +129,14 @@ bot.command('hi')
 	return ctx.sendMessage('OK. I understood. You fell <%=answer%>');
 });
 
+// start JADWAL
 bot.command('jadwal', {compilantKeyboard : true})
 	.invoke(function (ctx) {
 		var oneDays = 24*60*60*1000;
 		var now = new Date();
 		var tglMasuk = new Date(2016,08,22);
-		var hitungTgl = Math.round(Math.abs((now.getTime() - tglMasuk.getTime())/(oneDays)));
-		ctx.data.sisamasuk = hitungTgl;
+		//var hitungTgl = Math.round(Math.abs((now.getTime() - tglMasuk.getTime())/(oneDays)));
+		//ctx.data.sisamasuk = hitungTgl;
 		return ctx.sendMessage('main.info')
 	})
 	.keyboard([
@@ -113,54 +148,53 @@ bot.command('jadwal', {compilantKeyboard : true})
 		[{'button.sabtu' : {go : 'sabtu'}}],
 		'backButton'
 	])
-
 bot.command('senin', {compilantKeyboard : true})
 	.invoke(function (ctx) {
 	return ctx.sendMessage('main.senin');
 	ctx.repeat();
 });
-
 bot.command('selasa', {compilantKeyboard : true})
 	.invoke(function (ctx) {
 	return ctx.sendMessage('main.selasa');
 });
-
 bot.command('rabu', {compilantKeyboard : true})
 	.invoke(function (ctx) {
 	return ctx.sendMessage('main.rabu');
 });
-
-
 bot.command('kamis', {compilantKeyboard : true})
 	.invoke(function (ctx) {
 	return ctx.sendMessage('main.kamis');
 });
-
 bot.command('jumat', {compilantKeyboard : true})
 	.invoke(function (ctx) {
 	return ctx.sendMessage('main.jumat');
 });
-
 bot.command('sabtu', {compilantKeyboard : true})
 	.invoke(function (ctx) {
 	return ctx.sendMessage('main.sabtu');
 });
+//end JADWAL
 
+//HELP
 bot.command('help' , {compilantKeyboard : true})
 	.invoke(function (ctx) {
 		return ctx.sendMessage('main.help');
 });
+
+//TUGAS
 bot.command('tugas' , {compilantKeyboard : true})
 	.invoke(function (ctx) {
-		return ctx.sendMessage('main.notfound');
+		return ctx.sendMessage('main.tugas');
 });
+
+// PRAYER TIMES	
 bot.command('sholat' , {compilantKeyboard : true})
 	 .use('before', function(ctx) {
 	var oneDay = 24*60*60*1000;
 	var idulfitri = new Date(2016,06,06);
 	var waktu = new Date();
-	var toIdulFitri = Math.round(Math.abs((waktu.getTime() - idulfitri.getTime())/(oneDay)));
-	ctx.data.ied = toIdulFitri;
+	//var toIdulFitri = Math.round(Math.abs((waktu.getTime() - idulfitri.getTime())/(oneDay)));
+	//ctx.data.ied = toIdulFitri;
 	ctx.data.localtime = waktu;
  	ctx.data.waktusholat = Sholat.getTimes(waktu, [6.9719, 107.6127], 'auto', 'auto' );
  	ctx.data.latitude = '6.9719';
@@ -181,12 +215,14 @@ bot.command('sholat' , {compilantKeyboard : true})
 		return ctx.sendMessage('main.sholat');
 });
 
+// MAP
 bot.command('maptelkom' , {compilantKeyboard : true})
 	.invoke(function (ctx) {
 		return ctx.sendLocation(-6.974402 , 107.631733);
 	});
 
 
+// DATA 
 bot.command('data', {compilantKeyboard : true})
 	// .use('before', function(ctx) {
 	// 	ctx.sendMessage('Let me know your name');
@@ -475,39 +511,61 @@ bot.command('data', {compilantKeyboard : true})
 
 });
 
-		
-forecast.get([-6.974402, 107.631733], true, function(err, result){
-	if(err) return console.dir(err);
-	//console.dir(weather);
-	var timezone = result.timezone;
-	var status = result.currently.summary;
-	var temperature = Math.round(parseFloat(result.currently.temperature, 10));
-	var humidity = result.currently.humidity * 100;
-	var wind = Math.round(parseFloat(result.currently.windSpeed));
-	var statusDaily = result.daily.summary;
-	var statusHourly = result.hourly.summary;
-	var statuswindBear = result.currently.windBearing;
-	var statusSky = Math.round(result.currently.cloudCover * 100);
-	var dew = result.currently.dewPoint;
-	var statusPressure = result.currently.pressure;
-	var statusOzone = result.currently.ozone;
-	bot.command('weather', {compilantKeyboard : true})
-	.use('before', function (ctx) {
-			ctx.data.timezones = timezone;
-			ctx.data.statuss = status;
-			ctx.data.temperatures = temperature;
-			ctx.data.humiditys = humidity;
-			ctx.data.winds = wind;
-			ctx.data.today = statusDaily;
-			ctx.data.hourly = statusHourly;
-			ctx.data.windbear = statuswindBear;
-			ctx.data.sky = statusSky;
-			ctx.data.dewpoint = dew;
-			ctx.data.pressure = statusPressure;
-			ctx.data.ozone = statusOzone;
-	})
-	.invoke(function (ctx) {
-		return ctx.sendMessage('main.weather');
-	});
+
+// WEATHER
+var timezone;
+var status;	
+var temperature;
+var humidity;
+var wind;
+var statusDaily;
+var statusHourly;
+var statuswindBear;
+var statusSky;
+var dew;
+var statusPressure;
+var statusOzone;
+
+function getWeather() {
+	forecast.get([-6.974402, 107.631733], true, function(err, result){
+		if(err) return console.dir(err);
+		//console.dir(weather);
+		 timezone = result.timezone;
+		 status = result.currently.summary;
+		 temperature = Math.round(parseFloat(result.currently.temperature, 10));
+		 humidity = result.currently.humidity * 100;
+		 wind = Math.round(parseFloat(result.currently.windSpeed));
+		 statusDaily = result.daily.summary;
+		 statusHourly = result.hourly.summary;
+		 statuswindBear = result.currently.windBearing;
+		 statusSky = Math.round(result.currently.cloudCover * 100);
+		 dew = result.currently.dewPoint;
+		 statusPressure = result.currently.pressure;
+		 statusOzone = result.currently.ozone;
+	}); 
+};
+
+//INterval every 5 minutes;
+//setInterval(getWeather , 300000);
+	
+bot.command('weather', {compilantKeyboard : true})
+.use('before', function (ctx) {
+		getWeather();
+		ctx.data.timezones = timezone;
+		ctx.data.statuss = status;
+		ctx.data.temperatures = temperature;
+		ctx.data.humiditys = humidity;
+		ctx.data.winds = wind;
+		ctx.data.today = statusDaily;
+		ctx.data.hourly = statusHourly;
+		ctx.data.windbear = statuswindBear;
+		ctx.data.sky = statusSky;
+		ctx.data.dewpoint = dew;
+		ctx.data.pressure = statusPressure;
+		ctx.data.ozone = statusOzone;
+})
+.invoke(function (ctx) {
+	return ctx.sendMessage('main.weather');
 });
+
 		
