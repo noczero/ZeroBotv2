@@ -16,5 +16,6 @@
     "test": "node zerobot.js"
   },
   "author": "Satrya Budi Pratama",
-  "license": "MIT"
+  "license": "MIT",
+  "private" : true
 }

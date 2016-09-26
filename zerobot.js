@@ -28,13 +28,14 @@ var PrayerTimes = require('prayer-times'),
 
 //Cron Job
 var myId = '211470016';
+var groupID = '-105223936'
 
 // JadwalVarGloabalnotCTX
-var jadwalSenin = "Semangat pagi Boss! \n Jadwal kuliah hari ini \n 1. 09:30 - 12:30 (A208A) KU1.02.15 TBA \n 2. 12:30 - 15:30 KU3.05.13 PROBSTAT \n 3. 15:30 - 18:30 KU3.04.18 LOGMAT ";
-var jadwalSelasa = "Semangat pagi Boss! \n Jadwal kuliah hari ini : \n 1. 06:30 - 09:30 (A304B) KU1.03.08 SISOP  \n 2. 09:30 - 12:30 (A308B) KU1.03.10 SISDIG \n 3. 12:30 - 13:30 (A207B) KU1.02.14 STRUKDAT";
-var jadwalRabu = "Semangat pagi Boss! \n Jadwal kuliah hari ini : \n 1. 006:30 - 08:30 E302 KWU  \n 2. 12:30 - 14:30 (A304B) KU1.03.08 PBD \n 3. 14:30 - 16:30 (A308B) KU1.03.10 STRUKDAT";
-var jadwalKamis = "Semangat pagi Boss! \n Jadwal kuliah hari ini : \n 1. 06:30 - 09:30 LABIF-01 Prak. STRUKDAT";
-var jadwalJumat = "Semangat pagi Boss! \n Jadwal kuliah hari ini : \n 1. 12:30 - 15:30 LABIF-02 Prak. PBD";
+var jadwalSenin = "Semangat pagi Boss! \nJadwal kuliah hari ini \n1. 09:30 - 12:30 (A208A) KU1.02.15 TBA \n2. 12:30 - 15:30 KU3.05.13 PROBSTAT \n 3. 15:30 - 18:30 KU3.04.18 LOGMAT ";
+var jadwalSelasa = "Semangat pagi Boss! \nJadwal kuliah hari ini : \n1. 06:30 - 09:30 (A304B) KU1.03.08 SISOP  \n2. 09:30 - 12:30 (A308B) KU1.03.10 SISDIG \n 3. 12:30 - 13:30 (A207B) KU1.02.14 STRUKDAT";
+var jadwalRabu = "Semangat pagi Boss! \nJadwal kuliah hari ini : \n1. 006:30 - 08:30 E302 KWU  \n2. 12:30 - 14:30 (A304B) KU1.03.08 PBD \n 3. 14:30 - 16:30 (A308B) KU1.03.10 STRUKDAT";
+var jadwalKamis = "Semangat pagi Boss! \nJadwal kuliah hari ini : \n1. 06:30 - 09:30 LABIF-01 Prak. STRUKDAT";
+var jadwalJumat = "Semangat pagi Boss! \nJadwal kuliah hari ini : \n1. 12:30 - 15:30 LABIF-02 Prak. PBD";
 var jadwalSabtu = "Happy weekend Boss!, ntar malam ada QUIZ PDB & LPP STRUKDAT";
 var CronJob = require('cron').CronJob;
 var job = new CronJob({
@@ -42,15 +43,25 @@ var job = new CronJob({
   onTick: function() {
    	var hari=new Date();
     switch (hari.getDay()) { 	
-    	case 1 : bot.api.sendMessage(myId , jadwalSenin);
+    	case 1 : 
+    		bot.api.sendMessage(myId , jadwalSenin);
+			bot.api.sendMessage(groupID , jadwalSenin);
 		break;
-		case 2 : bot.api.sendMessage(myId , jadwalSelasa);
+		case 2 : 
+			bot.api.sendMessage(myId , jadwalSelasa);
+			bot.api.sendMessage(groupID , jadwalSelasa);
 		break;
-		case 3 : bot.api.sendMessage(myId , jadwalRabu);
+		case 3 : 
+			bot.api.sendMessage(myId , jadwalRabu);
+			bot.api.sendMessage(groupID , jadwalRabu);
 		break;
-		case 4 : bot.api.sendMessage(myId , jadwalKamis);
+		case 4 : 
+			bot.api.sendMessage(myId , jadwalKamis);
+			bot.api.sendMessage(groupID , jadwalKamis);
 		break;
-		case 5 : bot.api.sendMessage(myId , jadwalJumat);
+		case 5 : 
+			bot.api.sendMessage(myId , jadwalJumat);
+			bot.api.sendMessage(myId , jadwalJumat);
 		break;
 
 	}
@@ -546,10 +557,25 @@ function getWeather() {
 };
 
 //INterval every 5 minutes;
-//setInterval(getWeather , 300000);
+setInterval(getWeather , 300000);
 	
 bot.command('weather', {compilantKeyboard : true})
-.use('before', function (ctx) {
+// .use('before', function (ctx) {
+// 		getWeather();
+// 		ctx.data.timezones = timezone;
+// 		ctx.data.statuss = status;
+// 		ctx.data.temperatures = temperature;
+// 		ctx.data.humiditys = humidity;
+// 		ctx.data.winds = wind;
+// 		ctx.data.today = statusDaily;
+// 		ctx.data.hourly = statusHourly;
+// 		ctx.data.windbear = statuswindBear;
+// 		ctx.data.sky = statusSky;
+// 		ctx.data.dewpoint = dew;
+// 		ctx.data.pressure = statusPressure;
+// 		ctx.data.ozone = statusOzone;
+// })
+.invoke(function (ctx) {
 		getWeather();
 		ctx.data.timezones = timezone;
 		ctx.data.statuss = status;
@@ -563,9 +589,7 @@ bot.command('weather', {compilantKeyboard : true})
 		ctx.data.dewpoint = dew;
 		ctx.data.pressure = statusPressure;
 		ctx.data.ozone = statusOzone;
-})
-.invoke(function (ctx) {
-	return ctx.sendMessage('main.weather');
+		return ctx.sendMessage('main.weather');
 });
 
 		
