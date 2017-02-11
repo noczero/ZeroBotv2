@@ -31,37 +31,64 @@ var myId = '211470016';
 var groupID = '-105223936'
 
 // JadwalVarGloabalnotCTX
-var jadwalSenin = "Semangat pagi Boss! \nJadwal kuliah hari ini \n1. 09:30 - 12:30 (A208A) KU1.02.15 TBA \n2. 12:30 - 15:30 KU3.05.13 PROBSTAT \n 3. 15:30 - 18:30 KU3.04.18 LOGMAT ";
-var jadwalSelasa = "Semangat pagi Boss! \nJadwal kuliah hari ini : \n1. 06:30 - 09:30 (A304B) KU1.03.08 SISOP  \n2. 09:30 - 12:30 (A308B) KU1.03.10 SISDIG \n 3. 12:30 - 13:30 (A207B) KU1.02.14 STRUKDAT";
+var jadwalSenin = "Semangat pagi Boss! \nJadwal kuliah hari ini \n1. 07:30 - 10:30 (A207A)  SISTEM INFORMASI   \n2. 14:30 - 16:30 KU3.04.20 MATRIKS DAN RUANG VEKTOR  ";
+var jadwalSelasa = "Semangat pagi Boss! \nJadwal kuliah hari ini : \n1. 07:30 - 09:30 (A307B) MATRIKS DAN RUANG VEKTOR  \n2. 09:30 - 12:30 E301  PEMBELAJARAN MESIN  \n 3. 13:30 - 15:30 (A303A) ANALISIS DAN PERANCANGAN PERANGKAT LUNAK ";
 var jadwalRabu = "Semangat pagi Boss! \nJadwal kuliah hari ini : \n1. 006:30 - 08:30 E302 KWU  \n2. 12:30 - 14:30 (A304B) KU1.03.08 PBD \n 3. 14:30 - 16:30 (A308B) KU1.03.10 STRUKDAT";
-var jadwalKamis = "Semangat pagi Boss! \nJadwal kuliah hari ini : \n1. 06:30 - 09:30 LABIF-01 Prak. STRUKDAT";
-var jadwalJumat = "Semangat pagi Boss! \nJadwal kuliah hari ini : \n1. 12:30 - 15:30 LABIF-02 Prak. PBD";
-var jadwalSabtu = "Happy weekend Boss!, ntar malam ada QUIZ PDB & LPP STRUKDAT";
+var jadwalKamis = "Semangat pagi Boss! \nJadwal kuliah hari ini : \n1. 06:30 - 09:30 (A207A) SISTEM BASIS DATA \n 2. 13:30 - 16:30 (A310) ORGANISASI DAN ARSITEKTUR KOMPUTER \n 3. 16:30 - 18:30 (A310) PEMROGRAMAN BERORIENTASI OBYEK A ";
+var jadwalJumat = "Semangat pagi Boss! \nJadwal kuliah hari ini : \n1. 09:30 - 11:30 KU3.04.18 ANALISIS DAN PERANCANGAN PERANGKAT LUNAK \n 2. 15:30 - 18:30 LABIF-03 PEMROGRAMAN BERORIENTASI OBYEK A";
+var jadwalSabtu = "Happy weekend Boss!, ntar malam ada QUIZ SBD & LPP STRUKDAT";
+var jadwalMinggu = "Happy weekend Boss!";
+var jadwalKosong = "Semangat pagi Boss! TUBES TBA dikumpul Sabtu , 22 Oktober !!";
+//var ujian1 = "Semangat pagi Boss! Hari ini Ujian Sistem Digital 15:45";
+//var ujian2 = "Semangat pagi Boss! Hari ini Ujian TBA 12:30";
+var free = "Selamat pagi Boss! kerjain tugasnya";
 var CronJob = require('cron').CronJob;
 var job = new CronJob({
-  cronTime: '00 00 06 * * 1-5',
+  cronTime: '00 00 06 * * 1-7',
   onTick: function() {
    	var hari=new Date();
     switch (hari.getDay()) { 	
     	case 1 : 
     		bot.api.sendMessage(myId , jadwalSenin);
-			bot.api.sendMessage(groupID , jadwalSenin);
+			//bot.api.sendMessage(groupID , free);
+			//bot.api.sendMessage(myId , jadwalKosong);
+			//bot.api.sendMessage(groupID , jadwalKosong);
 		break;
 		case 2 : 
-			bot.api.sendMessage(myId , jadwalSelasa);
-			bot.api.sendMessage(groupID , jadwalSelasa);
+			bot.api.sendMessage(myId , free);
+			//bot.api.sendMessage(groupID , free);
+			//bot.api.sendMessage(myId , jadwalKosong);
+			//bot.api.sendMessage(groupID , jadwalKosong);
 		break;
 		case 3 : 
 			bot.api.sendMessage(myId , jadwalRabu);
-			bot.api.sendMessage(groupID , jadwalRabu);
+			//bot.api.sendMessage(groupID , free);
+			//bot.api.sendMessage(myId , jadwalKosong);
+			//bot.api.sendMessage(groupID , jadwalKosong);
 		break;
 		case 4 : 
 			bot.api.sendMessage(myId , jadwalKamis);
-			bot.api.sendMessage(groupID , jadwalKamis);
+			//bot.api.sendMessage(groupID , free);
+			//bot.api.sendMessage(myId , jadwalKosong);
+			//bot.api.sendMessage(groupID , jadwalKosong);
 		break;
 		case 5 : 
 			bot.api.sendMessage(myId , jadwalJumat);
-			bot.api.sendMessage(myId , jadwalJumat);
+			//bot.api.sendMessage(groupID , free);
+			//bot.api.sendMessage(myId , jadwalKosong);
+			//bot.api.sendMessage(groupID , jadwalKosong);
+		break;
+		case 6 : 
+			bot.api.sendMessage(myId , jadwalSabtu);
+			//bot.api.sendMessage(groupID , free);
+			//bot.api.sendMessage(myId , jadwalKosong);
+			//bot.api.sendMessage(groupID , jadwalKosong);
+		break;
+		case 7 : 
+			bot.api.sendMessage(myId , free);
+			//bot.api.sendMessage(groupID , free);
+			//bot.api.sendMessage(myId , jadwalKosong);
+			//bot.api.sendMessage(myId , jadwalKosong);
 		break;
 
 	}
@@ -71,7 +98,7 @@ var job = new CronJob({
 });
 job.start();
 
-var now = Date.now();
+//var now = Date.now();
 
 var bot = bb({
 	key : '211504778:AAErCs7jeVMcs33LgAsVTfuJ9tuexCBBkvE',
@@ -140,14 +167,28 @@ bot.command('hi')
 	return ctx.sendMessage('OK. I understood. You fell <%=answer%>');
 });
 
+//Hitung Tanggal
+
+function calculateDate(date1, date2){
+//our custom function with two parameters, each for a selected date
+ 
+  diffc = date1.getTime() - date2.getTime();
+  //getTime() function used to convert a date into milliseconds. This is needed in order to perform calculations.
+ 
+  days = Math.round(Math.abs(diffc/(1000*60*60*24)));
+  //this is the actual equation that calculates the number of days.
+ 
+return days;
+}
+
 // start JADWAL
 bot.command('jadwal', {compilantKeyboard : true})
 	.invoke(function (ctx) {
-		var oneDays = 24*60*60*1000;
+		// var oneDays = 24*60*60*1000;
 		var now = new Date();
-		var tglMasuk = new Date(2016,08,22);
-		//var hitungTgl = Math.round(Math.abs((now.getTime() - tglMasuk.getTime())/(oneDays)));
-		//ctx.data.sisamasuk = hitungTgl;
+		 var tglPenting = new Date("2016/10/10");
+		// var hitungTgl = Math.round(Math.abs((now.getTime() - tglPenting.getTime())/(oneDays)));
+		ctx.data.tglPenting = calculateDate(tglPenting,now);
 		return ctx.sendMessage('main.info')
 	})
 	.keyboard([
@@ -157,6 +198,7 @@ bot.command('jadwal', {compilantKeyboard : true})
 		[{'button.kamis' : {go : 'kamis'}}],
 		[{'button.jumat' : {go : 'jumat'}}],
 		[{'button.sabtu' : {go : 'sabtu'}}],
+		[{'button.ujian' : {go : 'ujian'}}],
 		'backButton'
 	])
 bot.command('senin', {compilantKeyboard : true})
@@ -184,6 +226,10 @@ bot.command('sabtu', {compilantKeyboard : true})
 	.invoke(function (ctx) {
 	return ctx.sendMessage('main.sabtu');
 });
+bot.command('ujian' , {compilantKeyboard : true})
+	.invoke(function (ctx){
+		return ctx.sendMessage('main.ujian');
+	});
 //end JADWAL
 
 //HELP
@@ -201,25 +247,35 @@ bot.command('tugas' , {compilantKeyboard : true})
 // PRAYER TIMES	
 bot.command('sholat' , {compilantKeyboard : true})
 	 .use('before', function(ctx) {
-	var oneDay = 24*60*60*1000;
-	var idulfitri = new Date(2016,06,06);
+	//var oneDay = 24*60*60*1000;
+	//var idulfitri = new Date(2016,06,06);
 	var waktu = new Date();
 	//var toIdulFitri = Math.round(Math.abs((waktu.getTime() - idulfitri.getTime())/(oneDay)));
 	//ctx.data.ied = toIdulFitri;
 	ctx.data.localtime = waktu;
- 	ctx.data.waktusholat = Sholat.getTimes(waktu, [6.9719, 107.6127], 'auto', 'auto' );
- 	ctx.data.latitude = '6.9719';
- 	ctx.data.longitude = '107.6127';
-	Sholat.setMethod('ISNA');
-	Sholat.tune({
-		sunrise : - 1,
-		fajr : 1 ,
-		dhuhr : 2 ,
-		asr : 4 ,
-		maghrib : -15,
-		isha : -4,
-		sunset : -15
-		});
+ 	ctx.data.waktusholat = Sholat.getTimes(waktu, [6.9175, 107.6191], 7 );
+ 	ctx.data.latitude = '6.9175';
+ 	ctx.data.longitude = '107.6191';
+	Sholat.setMethod('Makkah');
+	//Sholat.tune({
+	//	sunrise : - 1,
+	//	fajr : 1 ,
+	//	dhuhr : 2 ,
+	//	asr : 4 ,
+	//	maghrib : -15,
+	//	isha : -4,
+	//	sunset : -15
+	//	});
+
+	Sholat.adjust({
+		fajr : 24.5,
+		dhuhr : '2 min',
+		asr : 1.04,
+		maghrib : '22 min',
+		isha : 23,
+		highLats : 'AngleBased'
+	});
+
 	 })
 
 	.invoke(function (ctx) {
@@ -591,5 +647,7 @@ bot.command('weather', {compilantKeyboard : true})
 		ctx.data.ozone = statusOzone;
 		return ctx.sendMessage('main.weather');
 });
+
+
 
 		
