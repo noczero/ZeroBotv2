@@ -15,6 +15,7 @@ button:
   weather: ':rainbow: Weather'
   cancel: ':negative_squared_cross_mark: Cancel'
   like: ':heart_decoration: I like this bot'
+  ujian: ':rocket: UTS/UAS'
   rate:
     like: ":point_up: I've already rated bot"
     later: ":hourglass: I'll rate bot later"
@@ -27,29 +28,28 @@ main :
   
   senin : |
     :red_circle: Default Monday Schedules 
-    1. 09:30 - 12:30 (A208A) KU1.02.15 TBA
-    2. 12:30 - 15:30 KU3.05.13 PROBSTAT
-    3. 15:30 - 18:30 KU3.04.18 LOGMAT
+    1. 10:30 - 13:30  (A307B)  KECERDASAN BUATAN
+    2. 13:30 - 15:30  LABIF-04  JARINGAN KOMPUTER
 
   selasa : |
     :red_circle: Default Tuesday Schedules 
-    1. 06:30 - 09:30 (A304B) KU1.03.08 SISOP 
-    2. 09:30 - 12:30 (A308B) KU1.03.10 SISDIG
-    3. 12:30 - 13:30 (A207B) KU1.02.14 STRUKDAT
+    1. 07:30 - 09:30  KU3.04.20 DESAIN DAN ANALISIS ALGORITMA
+    2. 14:30 - 17:30  KU1.02.13  JARINGAN KOMPUTER
   
   rabu : |
     :red_circle: Default Wednesday Schedules 
-    1. 06:30 - 08:30 E302 KWU
-    2. 12:30 - 14:30 (A304B) KU1.03.08 PBD
-    3. 14:30 - 16:30 (A308B) KU1.03.10 STRUKDAT
+    1. 11:30 - 14:30  (A303A) IMPLEMENTASI DAN PENGUJIAN PERANGKAT LUNAK
+    2. 14:30 - 17:30  KU3.04.01  INTERAKSI MANUSIA DAN KOMPUTER A
 
   kamis : |
     :red_circle: Default Thursday Schedules
-    1. 06:30 - 09:30 LABIF-01 Prak. STRUKDAT
+    1. 06:30 - 08:30  (A208B)  TATA TULIS ILMIAH DAN TEKNIK PRESENTASI
+    2. 12:30 - 15:30  (A303B)  KEPROFESIAN INFORMATIKA
 
   jumat : |
     :red_circle: Default Friday Schedules 
-    1. 12:30 - 15:30 LABIF-02 Prak. PBD
+    1. 09:30 - 11:30  (A208A)  DESAIN DAN ANALISIS ALGORITMA
+    2. 15:30 - 17:30 LABIF-05  IMPLEMENTASI DAN PENGUJIAN PERANGKAT LUNAK
 
   sabtu : |
     :red_circle: Default Saturday Schedules 
@@ -57,10 +57,11 @@ main :
 
   tugas : |
     :large_blue_circle: Our Home Work
-    1. TUBES PBD 
-    2. TUGAS 2 LOGMAT (Deadline : 6 Oktober)
-    3. TUBES TBA
-    4. Bussiness Plan KWU
+    1. TUBES IMK 
+    2. TUBES IMPAL
+    3. TUBES DAA
+    4. TUBES JARKOM
+    5. TUBES AI
 
   help : |
     :white_circle: General Commands :
@@ -112,3 +113,7 @@ main :
 
     :telescope: Weekly Prediction:  
     <%=today%>
+
+  ujian : |
+    -- Nothing --
+

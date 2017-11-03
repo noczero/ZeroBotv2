@@ -31,14 +31,14 @@ var myId = '211470016';
 var groupID = '-105223936'
 
 // JadwalVarGloabalnotCTX
-var jadwalSenin = "Semangat pagi Boss! \nJadwal kuliah hari ini \n1. 07:30 - 10:30 (A207A)  SISTEM INFORMASI   \n2. 14:30 - 16:30 KU3.04.20 MATRIKS DAN RUANG VEKTOR  ";
-var jadwalSelasa = "Semangat pagi Boss! \nJadwal kuliah hari ini : \n1. 07:30 - 09:30 (A307B) MATRIKS DAN RUANG VEKTOR  \n2. 09:30 - 12:30 E301  PEMBELAJARAN MESIN  \n 3. 13:30 - 15:30 (A303A) ANALISIS DAN PERANCANGAN PERANGKAT LUNAK ";
-var jadwalRabu = "Semangat pagi Boss! \nJadwal kuliah hari ini : \n1. 006:30 - 08:30 E302 KWU  \n2. 12:30 - 14:30 (A304B) KU1.03.08 PBD \n 3. 14:30 - 16:30 (A308B) KU1.03.10 STRUKDAT";
-var jadwalKamis = "Semangat pagi Boss! \nJadwal kuliah hari ini : \n1. 06:30 - 09:30 (A207A) SISTEM BASIS DATA \n 2. 13:30 - 16:30 (A310) ORGANISASI DAN ARSITEKTUR KOMPUTER \n 3. 16:30 - 18:30 (A310) PEMROGRAMAN BERORIENTASI OBYEK A ";
-var jadwalJumat = "Semangat pagi Boss! \nJadwal kuliah hari ini : \n1. 09:30 - 11:30 KU3.04.18 ANALISIS DAN PERANCANGAN PERANGKAT LUNAK \n 2. 15:30 - 18:30 LABIF-03 PEMROGRAMAN BERORIENTASI OBYEK A";
-var jadwalSabtu = "Happy weekend Boss!, ntar malam ada QUIZ SBD & LPP STRUKDAT";
+var jadwalSenin = "Semangat pagi Boss! \nJadwal kuliah hari ini \n1. 10:30 - 13:30 (A307B)  KECERDASAN BUATAN   \n2. 13:30 - 15:30 LABIF-04 JARINGAN KOMPUTER  ";
+var jadwalSelasa = "Semangat pagi Boss! \nJadwal kuliah hari ini : \n1. 07:30 - 09:30 KU3.04.20 DESAIN DAN ANALISIS ALGORITMA  \n2. 14:30 - 17:30 (A207A) JARINGAN KOMPUTER  \n 3. 13:30 - 15:30 (A303A) ANALISIS DAN PERANCANGAN PERANGKAT LUNAK ";
+var jadwalRabu = "Semangat pagi Boss! \nJadwal kuliah hari ini : \n1. 11:30 - 14:30 (A303A) IMPAL  \n2. 14:30 - 17:30 (KU3.04.01) IMK";
+var jadwalKamis = "Semangat pagi Boss! \nJadwal kuliah hari ini : \n1. 06:30 - 08:30 (A208B) TATUL \n 2. 12:30 - 15:30 (A303B) KEPROF ";
+var jadwalJumat = "Semangat pagi Boss! \nJadwal kuliah hari ini : \n1. 09:30 - 11:30 (A208A) DESAIN DAN ANALISIS ALGORITMA \n 2. 15:30 - 18:30 LABIF-05 IMPLEMENTASI DAN PENGUJIAN PERANGKAT LUNAK";
+var jadwalSabtu = "Happy weekend Boss!";
 var jadwalMinggu = "Happy weekend Boss!";
-var jadwalKosong = "Semangat pagi Boss! TUBES TBA dikumpul Sabtu , 22 Oktober !!";
+var jadwalKosong = "Semangat pagi Boss!";
 //var ujian1 = "Semangat pagi Boss! Hari ini Ujian Sistem Digital 15:45";
 //var ujian2 = "Semangat pagi Boss! Hari ini Ujian TBA 12:30";
 var free = "Selamat pagi Boss! kerjain tugasnya";
