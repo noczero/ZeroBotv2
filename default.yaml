@@ -28,29 +28,25 @@ main :
   
   senin : |
     :red_circle:  Monday Schedules 
-    07:30 - 10:30 (A207A)  SISTEM INFORMASI  
-    14:30 - 16:30 KU3.04.20 MATRIKS DAN RUANG VEKTOR
+    09:30 - 12:30 (A207B)   TOPIK KHUSUS 2 TELEMATIKA  
 
   selasa : |
     :red_circle:  Tuesday Schedules 
-    Free
+    13:30 - 16:30 E301 PANCASILA DAN KEWARGANEGARAAN
   
   rabu : |
     :red_circle:  Wednesday Schedules 
-     07:30 - 09:30 (A307B) MATRIKS DAN RUANG VEKTOR  
-     09:30 - 12:30 E301  PEMBELAJARAN MESIN 
-     13:30 - 15:30 (A303A) ANALISIS DAN PERANCANGAN PERANGKAT LUNAK  
+     07:30 - 09:30 (A207A) PENULISAN PROPOSAL
+     09:30 - 12:30 A207B  DASAR PEMODELAN DAN SIMULASI 
+     13:30 - 15:30 (A308A) JARINGAN KOMPUTER LANJUT  
 
   kamis : |
     :red_circle:  Thursday Schedules
-     06:30 - 09:30 (A207A) SISTEM BASIS DATA 
-     13:30 - 16:30 (A310) ORGANISASI DAN ARSITEKTUR KOMPUTER  
-     16:30 - 18:30 (A310) PEMROGRAMAN BERORIENTASI OBYEK A  
+     06:30 - 09:30 (A208B) SISTEM PARALEL DAN TERDISTRIBUSI 
 
   jumat : |
     :red_circle:  Friday Schedules 
-    09:30 - 11:30 KU3.04.18 ANALISIS DAN PERANCANGAN PERANGKAT LUNAK
-    15:30 - 18:30 LABIF-03 PEMROGRAMAN BERORIENTASI OBYEK A
+    Free
 
   sabtu : |
     :red_circle:  Saturday Schedules 

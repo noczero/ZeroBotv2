@@ -12,10 +12,10 @@ button:
   kamis : ':four: Thursday'
   jumat : ':five: Friday'
   sabtu : ':six: Saturday'
+  ujian : ':rocket: Midterm'
   weather: ':rainbow: Weather'
   cancel: ':negative_squared_cross_mark: Cancel'
   like: ':heart_decoration: I like this bot'
-  ujian: ':rocket: UTS/UAS'
   rate:
     like: ":point_up: I've already rated bot"
     later: ":hourglass: I'll rate bot later"
@@ -27,41 +27,42 @@ main :
   hi : 'Hello, <%=user.first_name%>, What can I do for you?'
   
   senin : |
-    :red_circle: Default Monday Schedules 
-    1. 10:30 - 13:30  (A307B)  KECERDASAN BUATAN
-    2. 13:30 - 15:30  LABIF-04  JARINGAN KOMPUTER
+    :red_circle:  Monday Schedules 
+    09:30 - 12:30 (A207B)   TOPIK KHUSUS 2 TELEMATIKA  
 
   selasa : |
-    :red_circle: Default Tuesday Schedules 
-    1. 07:30 - 09:30  KU3.04.20 DESAIN DAN ANALISIS ALGORITMA
-    2. 14:30 - 17:30  KU1.02.13  JARINGAN KOMPUTER
+    :red_circle:  Tuesday Schedules 
+    13:30 - 16:30 E301 PANCASILA DAN KEWARGANEGARAAN
   
   rabu : |
-    :red_circle: Default Wednesday Schedules 
-    1. 11:30 - 14:30  (A303A) IMPLEMENTASI DAN PENGUJIAN PERANGKAT LUNAK
-    2. 14:30 - 17:30  KU3.04.01  INTERAKSI MANUSIA DAN KOMPUTER A
+    :red_circle:  Wednesday Schedules 
+     07:30 - 09:30 (A207A) PENULISAN PROPOSAL
+     09:30 - 11:30 A207B  DASAR PEMODELAN DAN SIMULASI 
+     12:30 - 15:30 (A308A) JARINGAN KOMPUTER LANJUT  
 
   kamis : |
-    :red_circle: Default Thursday Schedules
-    1. 06:30 - 08:30  (A208B)  TATA TULIS ILMIAH DAN TEKNIK PRESENTASI
-    2. 12:30 - 15:30  (A303B)  KEPROFESIAN INFORMATIKA
+    :red_circle:  Thursday Schedules
+     06:30 - 09:30 (A208B) SISTEM PARALEL DAN TERDISTRIBUSI 
 
   jumat : |
-    :red_circle: Default Friday Schedules 
-    1. 09:30 - 11:30  (A208A)  DESAIN DAN ANALISIS ALGORITMA
-    2. 15:30 - 17:30 LABIF-05  IMPLEMENTASI DAN PENGUJIAN PERANGKAT LUNAK
+    :red_circle:  Friday Schedules 
+    Free
 
   sabtu : |
-    :red_circle: Default Saturday Schedules 
-    1. Free
+    :red_circle:  Saturday Schedules 
+    Free
+
+  minggu : |
+    :red_circle Sunday Schedules
+    Free
+
+  ujian : |
+    Not Found
+
 
   tugas : |
     :large_blue_circle: Our Home Work
-    1. TUBES IMK 
-    2. TUBES IMPAL
-    3. TUBES DAA
-    4. TUBES JARKOM
-    5. TUBES AI
+    1. nope
 
   help : |
     :white_circle: General Commands :
@@ -93,7 +94,7 @@ main :
     
   info : |
     :heavy_check_mark: Choose Schedule 
-
+    
 
   weather : |
     :round_pushpin: Bandung, Indonesia
@@ -113,7 +114,3 @@ main :
 
     :telescope: Weekly Prediction:  
     <%=today%>
-
-  ujian : |
-    -- Nothing --
-

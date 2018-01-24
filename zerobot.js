@@ -31,11 +31,11 @@ var myId = '211470016';
 var groupID = '-105223936'
 
 // JadwalVarGloabalnotCTX
-var jadwalSenin = "Semangat pagi Boss! \nJadwal kuliah hari ini \n1. 10:30 - 13:30 (A307B)  KECERDASAN BUATAN   \n2. 13:30 - 15:30 LABIF-04 JARINGAN KOMPUTER  ";
-var jadwalSelasa = "Semangat pagi Boss! \nJadwal kuliah hari ini : \n1. 07:30 - 09:30 KU3.04.20 DESAIN DAN ANALISIS ALGORITMA  \n2. 14:30 - 17:30 (A207A) JARINGAN KOMPUTER  \n 3. 13:30 - 15:30 (A303A) ANALISIS DAN PERANCANGAN PERANGKAT LUNAK ";
-var jadwalRabu = "Semangat pagi Boss! \nJadwal kuliah hari ini : \n1. 11:30 - 14:30 (A303A) IMPAL  \n2. 14:30 - 17:30 (KU3.04.01) IMK";
-var jadwalKamis = "Semangat pagi Boss! \nJadwal kuliah hari ini : \n1. 06:30 - 08:30 (A208B) TATUL \n 2. 12:30 - 15:30 (A303B) KEPROF ";
-var jadwalJumat = "Semangat pagi Boss! \nJadwal kuliah hari ini : \n1. 09:30 - 11:30 (A208A) DESAIN DAN ANALISIS ALGORITMA \n 2. 15:30 - 18:30 LABIF-05 IMPLEMENTASI DAN PENGUJIAN PERANGKAT LUNAK";
+var jadwalSenin = "Semangat pagi Boss! \nJadwal kuliah hari ini \n1. 09:30 - 12:30 (A207B)  TOPIK KHUSUS 2 TELEMATIKA";
+var jadwalSelasa = "Semangat pagi Boss! \nJadwal kuliah hari ini : \n1. 13:30 - 16:30 E301 PANCASILA DAN KEWARGANEGARAAN";
+var jadwalRabu = "Semangat pagi Boss! \nJadwal kuliah hari ini : \n1. 07:30 - 09:30 (A207A) PENULISAN PROPOSAL  \n2. 09:30 - 11:30 (A207B) DASAR PEMODELAN DAN SIMULASI \n 3. 12:30 - 15:30 (A308A) JARINGAN KOMPUTER LANJUT";
+var jadwalKamis = "Semangat pagi Boss! \nJadwal kuliah hari ini : \n1. 13:30 - 16:30 (A208B) SISTEM PARALEL DAN TERDISTRIBUSI";
+var jadwalJumat = "Happy weekend Boss!";
 var jadwalSabtu = "Happy weekend Boss!";
 var jadwalMinggu = "Happy weekend Boss!";
 var jadwalKosong = "Semangat pagi Boss!";
