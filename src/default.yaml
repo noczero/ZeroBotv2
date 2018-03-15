@@ -14,6 +14,7 @@ button:
   sabtu : ':six: Saturday'
   ujian : ':rocket: Midterm'
   weather: ':rainbow: Weather'
+  labIoT : ':space_invader: ZeroSystem-IoT'
   cancel: ':negative_squared_cross_mark: Cancel'
   like: ':heart_decoration: I like this bot'
   rate:
@@ -114,3 +115,12 @@ main :
 
     :telescope: Weekly Prediction:  
     <%=today%>
+
+  iot : |
+    ZeroSystem-IoT
+    -- Outdoor --
+    Last Update : <%=wktu%>
+    Temperature : <%=tmp%> °C
+    Humidity : <%=hmdt%> %
+    -- Indoor --
+    Movement : null

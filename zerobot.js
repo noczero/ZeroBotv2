@@ -10,6 +10,48 @@
 var bb = require ('bot-brother');
 var texts = require ('./texts.js');
 var Forecast = require('forecast');
+var async = require('async');
+/*=====================================
+=            Postgress SQL            =
+=====================================*/
+const postgress = require('pg');
+const config = {
+    user: 'pi',
+    database: 'zeroWeather',
+    password: 'noczero',
+    port: 5432
+};
+
+const pool = new postgress.Pool(config);
+//postgres://dbusername:passwrod@server:port/database
+const connectionString = process.env.DATABASE_URL || 'postgres://pi:noczero@localhost:5432/zeroWeather';
+
+function getLastOutdoor(){
+	//var results = []; 
+	pool.connect((err,client,done) => {
+		if(err){
+			done();
+			console.log(err);
+		} else {
+			const queryString = "SELECT id,temperature,humidity,extract(epoch from date) FROM dhtoutdoor ORDER BY id DESC LIMIT 1";
+
+			client.query(queryString, (err,result) => {
+				done();
+				if(err){
+					console.log(err);
+				} 
+					console.log(result.rows[0]);
+					//results.push(result.rows);
+					return result.rows;
+					console.log(result.rows);
+				//done();
+		
+			});
+		}
+	});
+	//console.log(results);
+	//return results;
+};
 
 //Cuaca
 var forecast = new Forecast ({
@@ -114,6 +156,7 @@ var bot = bb({
 	[{'button.data' : {go : 'data' }}],
 	[{'button.map' : {go : 'maptelkom' }}],
 	[{'button.weather' : {go : 'weather' }}],
+	[{'button.labIoT' : {go : 'zerosystem' }}],
 	[{'button.help' : {go : 'help' }}]
 	
 ])
@@ -134,6 +177,8 @@ var bot = bb({
 .use('before', function (ctx) {
 	var now = Date.now();
 
+	ctx.data.user = ctx.meta.user;
+	console.log(ctx.data.user);
 });
 
 
@@ -157,8 +202,9 @@ console.log('ZeroBotV2 Started');
 bot.command('hi')
 	.invoke(function (ctx) {
 	ctx.data.user = ctx.meta.user;
+	//console.log(ctx.meta.user);
 	//Return
-	return ctx.sendMessage('Hello <%=user.first_name%>, How are you?');
+	return ctx.sendMessage('Hello <%=user.first_name%>, <%=user.id%> How are you?');
 	ctx.hideKeyboard();
 })
 .answer( function(ctx) {
@@ -230,6 +276,7 @@ bot.command('ujian' , {compilantKeyboard : true})
 	.invoke(function (ctx){
 		return ctx.sendMessage('main.ujian');
 	});
+
 //end JADWAL
 
 //HELP
@@ -649,5 +696,196 @@ bot.command('weather', {compilantKeyboard : true})
 });
 
 
+// MAP
+bot.command('zerosystem' , {compilantKeyboard : true})
+	.invoke(function (ctx) {
+		var dataRaw = [];
+		pool.connect((err,client,done) => {
+			if(err){
+				done();
+				console.log(err);
+			} else {
+				const queryString = "SELECT id,temperature,humidity,extract(epoch from date) as waktu FROM dhtoutdoor ORDER BY id DESC LIMIT 1";
 
+				client.query(queryString, (err,result) => {
+					done();
+					if(err){
+						console.log(err);
+					}
+						dataRaw = result.rows[0];
+						//results.push(result.rows);
+				});
+			}
+		});
+
+		// const queryString = "SELECT id,temperature,humidity,extract(epoch from date) as waktu FROM dhtoutdoor ORDER BY id DESC LIMIT 1";
+		// pool.query(queryString, (err, res) => {
+		//   if (err) {
+		//     throw err
+		//   }
+
+		 //dataRaw = res.rows[0];
+		  
+		//})
+		//var dataRaw = getServers();
+		//console.log(dataRaw);
+
+		setTimeout(function () {
+						if (dataRaw != null) {
+
+		  				ctx.data.wktu = convertTimestamp(dataRaw.waktu) ;
+		  				ctx.data.tmp = dataRaw.temperature ;
+		 				ctx.data.hmdt = dataRaw.humidity ;
+		 				console.log(dataRaw.waktu);
+						}
+						console.log(dataRaw);
+		 				return ctx.sendMessage('main.iot');
+
+		}, 500)
+		// async.waterfall(
+  //       [
+  //           connect,
+  //           runQuery,
+  //           printResults
+  //       ],
+  //       	function (error, success) {
+  //       		ctx.data.tmp = 0 ;
 		
+
+  //       	}
+  //       );
+		//console.log(dataRaw);
+		
+		//console.log(ctx.data.tmp);
+		//console.log(getLastOutdoor());
+		//console.log(outdoor[0]);
+});
+
+
+function convertTimestamp(timestamp) {
+  var d = new Date(timestamp * 1000),	// Convert the passed timestamp to milliseconds
+		yyyy = d.getFullYear(),
+		mm = ('0' + (d.getMonth() + 1)).slice(-2),	// Months are zero based. Add leading 0.
+		dd = ('0' + d.getDate()).slice(-2),			// Add leading 0.
+		hh = d.getHours(),
+		h = hh,
+		min = ('0' + d.getMinutes()).slice(-2),		// Add leading 0.
+		ampm = 'AM',
+		time;
+			
+	if (hh > 12) {
+		h = hh - 12;
+		ampm = 'PM';
+	} else if (hh === 12) {
+		h = 12;
+		ampm = 'PM';
+	} else if (hh == 0) {
+		h = 12;
+	}
+	
+	// ie: 2013-02-18, 8:35 AM	
+	time = yyyy + '-' + mm + '-' + dd + ', ' + h + ':' + min + ' ' + ampm;
+		
+	return time;
+};
+		
+
+
+function executeQuery(queryString, callback) {
+	pool.connect((err,client,done) => {
+			if(err){
+				done();
+				console.log(err);
+				return callback(err,null);
+			} else {
+				client.query(queryString, (err,result) => {
+					done();
+					if(err){
+						console.log(err);
+						callback(err, null);
+					}
+					return callback(null, result.rows[0]);
+						//results.push(result.rows);
+				});
+			}
+	});
+}
+
+
+function getResult(query,callback) {
+  executeQuery(query, function (err, rows) {
+     if (!err) {
+        callback(null,rows);
+     }
+     else {
+        callback(true,err);
+     }
+   });
+}
+
+function getServers(){
+	const queryString = "SELECT id,temperature,humidity,extract(epoch from date) as waktu FROM dhtoutdoor ORDER BY id DESC LIMIT 1";
+
+	getResult(queryString,function(err,rows){
+    if(!err){
+        return rows;
+    }else{
+        console.log(err);
+    }
+  });
+}
+
+
+
+function connect(callback)
+{
+    pool.connect( function(err,client,done)
+    {
+        if(err)
+        {
+            console.error("Error setting up database: %s", err.stack || err.toString());
+        } // end if
+
+        // Manually pass a second 'null' argument, so this adheres to the same interface as pg.query.
+        callback(client, done);
+    }); // end onConnect
+} // end connect
+
+// Since pg.query passes its callback (error, results), all of the following callbacks take a 'results' argument; most
+// of them ignore it.
+
+function runQuery(client, callback)
+{
+    // We expect to get rows 0, 4, and 6 back.
+    const queryString = "SELECT id,temperature,humidity,extract(epoch from date) as waktu FROM dhtoutdoor ORDER BY id DESC LIMIT 1";
+    client.query(queryString,callback);
+} // end runQuery
+
+
+function printResults(result, callback)
+{
+    var rows = result.rows;
+
+    console.log("results:"+ rows);
+
+    done();
+    callback(null, null);
+} // end printResults
+
+function shutdown(error)
+{
+    //client = null;
+    if(done)
+    {
+        done();
+    } // end if
+    //done = null;
+
+    if(error)
+    {
+        console.error("\033[1;31m%s\033[m", error.stack || error.toString());
+        console.error("Details:", util.inspect(error, {colors: true}));
+    }
+    
+
+} // end shutdown
